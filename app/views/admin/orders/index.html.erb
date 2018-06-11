@@ -1,0 +1,24 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Number</th>
+      <th scope="col">Deliver By</th>
+      <th scope="col">Earliest Delivery</th>
+    </tr>
+  <thead>
+  <tbody>
+    <% @orders.each_with_index do |order, index| %>
+      <tr>
+        <th scope="col">
+          <%= order.number %>
+        </th>
+        <th scope="col">
+          <%= order.deliver_by %>
+        </th>
+        <th scope="col">
+          <%= order.earliest_deliver%>
+        </th>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
