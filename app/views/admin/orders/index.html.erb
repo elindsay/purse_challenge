@@ -4,6 +4,7 @@
       <th scope="col">Number</th>
       <th scope="col">Deliver By</th>
       <th scope="col">Earliest Delivery</th>
+      <th scope="col"></th>
     </tr>
   <thead>
   <tbody>
@@ -17,6 +18,9 @@
         </th>
         <th scope="col">
           <%= order.earliest_deliver%>
+        </th>
+        <th scope="col">
+          <%= button_to "delete", admin_order_path(order), method: :delete %>
         </th>
       </tr>
     <% end %>
