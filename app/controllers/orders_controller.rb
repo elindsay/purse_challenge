@@ -6,29 +6,30 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(input_string: params[:order][:input_string])
     if @order.save
-      render json: { 
-        order: @order.number,
-        deliver: @order.deliver_by 
-      }.to_json
+      render json: @order
     else
       render json: { 
         errors: @order.errors.full_messages 
-      }.to_json
+      }.to_json,
+      status: 422
     end
   end
 
   def show
     @order = Order.find_by_number(params[:id])
     if @order
-      render json: { 
-        order: @order.number,
-        deliver: @order.deliver_by 
-      }.to_json
+      render json: @order
     else
       render json: { 
         errors: "Order not found"
-      }.to_json
+      }.to_json,
+      status: 404
     end
+  end
+
+  def index
+    @orders = Order.all
+    render json: @orders
   end
 
   private
