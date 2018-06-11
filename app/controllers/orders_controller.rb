@@ -17,6 +17,20 @@ class OrdersController < ApplicationController
     end
   end
 
+  def show
+    @order = Order.find_by_number(params[:id])
+    if @order
+      render json: { 
+        order: @order.number,
+        deliver: @order.deliver_by 
+      }.to_json
+    else
+      render json: { 
+        errors: "Order not found"
+      }.to_json
+    end
+  end
+
   private
 
   def order_params
