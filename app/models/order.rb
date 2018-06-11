@@ -2,13 +2,11 @@ class Order < ActiveRecord::Base
   attr_accessor :input_string
 
   validates :number, format: {with: /\d{3}-\d{7}-\d{7}/ }, uniqueness: true
-  validates :deliver_by, presence: true
+  validates :deliver_by, presence: { message: "is not formatted correctly" }
   before_validation :format_input
 
 
   def format_input
-    Rails.logger.debug "HERe"
-    puts "here"
     input_array = input_string.split("\n")
     order_string = input_array[0].split("Order Number: ")[1].strip
     date_string = input_array[1].split("delivery by ")[1]

@@ -4,8 +4,17 @@ class OrdersController < ApplicationController
   end
 
   def create
-    logger.debug "In controller"
-    @order = Order.create(input_string: params[:order][:input_string])
+    @order = Order.new(input_string: params[:order][:input_string])
+    if @order.save
+      render json: { 
+        order: @order.number,
+        deliver: @order.deliver_by 
+      }.to_json
+    else
+      render json: { 
+        errors: @order.errors.full_messages 
+      }.to_json
+    end
   end
 
   private
