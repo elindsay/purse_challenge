@@ -21,7 +21,7 @@ class OrdersController < ApplicationController
       render json: @order
     else
       render json: { 
-        errors: "Order not found"
+        error: "Order not found"
       }.to_json,
       status: 404
     end
