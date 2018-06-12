@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  protect_from_forgery with: :null_session
   def new
     @order = Order.new
   end
