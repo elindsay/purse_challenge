@@ -9,6 +9,7 @@ class Order < ActiveRecord::Base
   def format_input
     begin
       input_array = input_string.split("\n")
+      input_array = input_string.split("|") unless input_array.length > 1
       order_string = input_array[0].split("Order Number: ")[1].strip
       date_string = input_array[1].split("delivery by ")[1]
       self.number = order_string
