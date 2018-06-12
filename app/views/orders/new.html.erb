@@ -1,4 +1,27 @@
-<%= form_for @order do |f| %>
-  <%= f.text_area :input_string %>
-  <%= f.submit %>
-<% end %>
+<div class="container">
+  <div class="row" style="margin-top: 20px;">
+    <div class="col">
+      <h5>
+        Please enter text in following format, with a new line between order and delivery:
+      </h5>
+      <div style="padding: 10px; background-color: #eee; margin-bottom: 10px;">
+        Order Number: 232-9384712-9823512
+        <br />
+        Estimated delivery by Dec. 20, 2016 - Dec. 30, 2016
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <%= form_for @order do |f| %>
+        <div class="form-group">
+          <%= f.text_area :input_string, style: "width: 100%; height: 200px;"%>
+        </div>
+        <div class="form-group">
+          <%= f.submit class: "btn btn-primary" %>
+          <%= link_to "Admin", admin_root_path %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

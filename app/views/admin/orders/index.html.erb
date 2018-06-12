@@ -11,7 +11,7 @@
     <% @orders.each_with_index do |order, index| %>
       <tr>
         <th scope="col">
-          <%= order.number %>
+          <%= link_to order.number, "/orders/#{order.number}"%>
         </th>
         <th scope="col">
           <%= order.deliver_by %>
@@ -20,7 +20,7 @@
           <%= order.earliest_deliver%>
         </th>
         <th scope="col">
-          <%= button_to "delete", admin_order_path(order), method: :delete %>
+          <%= button_to "delete", admin_order_path(order), method: :delete, class: "btn btn-primary" %>
         </th>
       </tr>
     <% end %>
